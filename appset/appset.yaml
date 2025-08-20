@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apps-one-namespace
+  namespace: openshift-gitops
+spec:
+  generators:
+    - list:
+        elements:
+          - name: service-a
+            path: charts/service-a
+            wave: "0"
+          - name: service-b
+            path: charts/service-b
+            wave: "1"
+  template:
+    metadata:
+      name: '{{name}}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{wave}}'
+    spec:
+      project: default
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: my-team-namespace
+      source:
+        repoURL: https://your.git.example/repo.git
+        targetRevision: main
+        path: '{{path}}'
+      syncPolicy:
+        automated: {}

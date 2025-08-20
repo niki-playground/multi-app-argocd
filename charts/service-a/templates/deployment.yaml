@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a
+  labels:
+    app.kubernetes.io/name: service-a
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: service-a
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: service-a
+    spec:
+      containers:
+        - name: app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          command: ["sleep","infinity"]
+          ports:
+            - containerPort: {{ .Values.service.port }}
