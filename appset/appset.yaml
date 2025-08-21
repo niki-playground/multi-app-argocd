@@ -21,7 +21,7 @@ spec:
     spec:
       project: appset
       destination:
-        server: kind-local-cluster-argocd
+        server: https://kubernetes.default.svc
         namespace: playground
       source:
         repoURL: https://github.com/niki-playground/multi-app-argocd.git
