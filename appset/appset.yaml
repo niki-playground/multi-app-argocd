@@ -22,7 +22,7 @@ spec:
       project: appset
       destination:
         server: https://kubernetes.default.svc
-        namespace: playground
+        namespace: argocd
       source:
         repoURL: https://github.com/niki-playground/multi-app-argocd.git
         targetRevision: main
