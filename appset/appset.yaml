@@ -7,10 +7,10 @@ spec:
   generators:
     - list:
         elements:
-          - name: service-a1
+          - name: service-a
             path: charts/service-a
             wave: "0"
-          - name: service-b1
+          - name: service-b
             path: charts/service-b
             wave: "1"
   template:
@@ -22,7 +22,7 @@ spec:
       project: appset
       destination:
         server: kind-local-cluster-argocd
-        namespace: my-team-namespace
+        namespace: playground
       source:
         repoURL: https://github.com/niki-playground/multi-app-argocd.git
         targetRevision: main
