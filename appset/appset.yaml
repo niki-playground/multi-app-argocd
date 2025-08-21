@@ -2,15 +2,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: apps-one-namespace
-  namespace: openshift-gitops
+  namespace: argocd
 spec:
   generators:
     - list:
         elements:
-          - name: service-a
+          - name: service-a1
             path: charts/service-a
             wave: "0"
-          - name: service-b
+          - name: service-b1
             path: charts/service-b
             wave: "1"
   template:
@@ -19,12 +19,12 @@ spec:
       annotations:
         argocd.argoproj.io/sync-wave: '{{wave}}'
     spec:
-      project: default
+      project: appset
       destination:
-        server: https://kubernetes.default.svc
+        server: kind-local-cluster-argocd
         namespace: my-team-namespace
       source:
-        repoURL: https://your.git.example/repo.git
+        repoURL: https://github.com/niki-playground/multi-app-argocd.git
         targetRevision: main
         path: '{{path}}'
       syncPolicy:
