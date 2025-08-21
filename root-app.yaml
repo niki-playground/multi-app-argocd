@@ -2,14 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: root-app
-  namespace: openshift-gitops
+  namespace: argocd
 spec:
   project: default
   destination:
-    server: https://kubernetes.default.svc
-    namespace: openshift-gitops
+    server: kind-local-cluster-argocd
+    namespace: argocd
   source:
-    repoURL: https://your.git.example/repo.git
+    repoURL: https://github.com/niki-playground/multi-app-argocd.git
     targetRevision: main
     path: apps
   syncPolicy:
