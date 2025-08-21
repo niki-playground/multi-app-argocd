@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: service-b
-  namespace: openshift-gitops
+  namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   destination:
-    server: https://kubernetes.default.svc
-    namespace: my-team-namespace
+    server: kind-local-cluster-argocd
+    namespace: argocd
   source:
-    repoURL: https://your.git.example/repo.git
+    repoURL: https://github.com/niki-playground/multi-app-argocd.git
     targetRevision: main
     path: charts/service-b
   syncPolicy:
