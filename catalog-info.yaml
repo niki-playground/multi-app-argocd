@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-service
+  description: My service description
+  annotations:
+    backstage.io/techdocs-ref: dir:.  # Enables TechDocs
+spec:
+  type: service                      # required
+  owner: group:guests               # required (can be "group:..." or "user:...")
+  lifecycle: production              # required (e.g., production | experimental | deprecated)
