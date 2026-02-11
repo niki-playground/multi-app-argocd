@@ -1,4 +1,4 @@
-site_name: test ArgoCD Docs
+site_name: Test ArgoCD Docs
 nav:
   - Home: index.md
   - Architecture: architecture.md
