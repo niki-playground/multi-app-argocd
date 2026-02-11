@@ -1,0 +1,6 @@
+site_name: test ArgoCD Docs
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+plugins:
+  - techdocs-core
